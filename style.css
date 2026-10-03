@@ -88,28 +88,6 @@ img{display:block;max-width:100%}.hero-studio{width:min(36vw,520px)}.hero-studio
 .work-card:nth-child(3) img,.work-card:nth-child(4) img,.work-card:nth-child(5) img{height:100%!important;width:100%!important;object-fit:cover!important;object-position:center!important}
 /* Crop the pale photographed surround from Wet Summer */
 .work-card:nth-child(5) img{transform:scale(1.16)!important}
-/* Row 3: crop photographed surrounds from L'Eponge and Dans Le Four Stellaire */
-.work-card:nth-child(7) img{transform:scale(1.23)!important}
-.work-card:nth-child(8) img{transform:scale(1.12)!important}
-
-/* 2026-10-03: stronger index-only crops for photographed surrounds */
-.work-card:nth-child(2),
-.work-card:nth-child(6),
-.work-card:nth-child(7){overflow:hidden!important}
-.work-card:nth-child(2) img{transform:scale(1.24)!important}
-.work-card:nth-child(6) img{transform:scale(1.16)!important}
-.work-card:nth-child(7) img{transform:scale(1.42)!important}
-
-/* Exact crop for L'Éponge thumbnail: remove left/right photographed grey margins */
-.work-card:nth-child(7) img{
-  width:142%!important;
-  height:142%!important;
-  max-width:none!important;
-  object-fit:cover!important;
-  object-position:center center!important;
-  transform:none!important;
-}
-
 /* Row 2: equal-size 48 x 60 in works — identical displayed artwork dimensions */
 .work-card:nth-child(3),
 .work-card:nth-child(4),
@@ -129,3 +107,12 @@ img{display:block;max-width:100%}.hero-studio{width:min(36vw,520px)}.hero-studio
 }
 
 .exhibition-links{margin-top:clamp(70px,11vh,150px);display:flex;flex-direction:column;gap:18px;max-width:1000px}.exhibition-links a{font-size:clamp(22px,2.5vw,42px);font-weight:300;line-height:1.18;color:#b7b7b7;text-decoration:none;transition:color .18s ease}.exhibition-links a:hover,.exhibition-links a:focus{color:#111}.exhibition-head{margin:20px 0 70px;display:grid;grid-template-columns:minmax(260px,1fr) 1fr;gap:60px;align-items:start}.exhibition-head h1{font-size:clamp(28px,3vw,48px);font-weight:300;margin:0}.exhibition-head p{font-size:13px;line-height:1.65;margin:5px 0 0}.exhibition-images{min-height:260px;border-top:1px solid #eee;border-bottom:1px solid #eee;display:flex;align-items:center;justify-content:center;margin-bottom:85px}.image-placeholder{font-size:12px;color:#aaa}.exhibition-works h2{font-size:14px;font-weight:400;margin:0 0 45px}.circuitry-grid .work-card:nth-child(1){grid-column:1 / span 4!important;height:430px!important}.viewer-info blockquote{margin:28px 0 8px;padding:0;font-size:13px;line-height:1.65;font-style:italic;max-width:300px}.viewer-source{font-size:11px!important;line-height:1.5!important;color:#777}@media(max-width:760px){.exhibition-head{grid-template-columns:1fr;gap:16px;margin-bottom:40px}.exhibition-links{margin-top:55px}.exhibition-images{min-height:180px;margin-bottom:55px}.circuitry-grid .work-card:nth-child(1){grid-column:1 / span 2!important;height:60vw!important}}
+
+/* Replaced clean artwork files: no photographic-margin crop */
+.work-card[data-title="The Egg, The Bird"] img,
+.work-card[data-title="Infinite Distance Within Two Meters"] img,
+.work-card[data-title="L’Éponge, L’Orange"] img{
+  transform:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+}
