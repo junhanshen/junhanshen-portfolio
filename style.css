@@ -80,3 +80,14 @@ img{display:block;max-width:100%}.hero-studio{width:min(36vw,520px)}.hero-studio
 .work-card:nth-child(2) img{transform:scale(1.06)}
 .work-card:nth-child(5) img{transform:scale(1.08)}
 @media(max-width:760px){.work-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;column-gap:10px!important;row-gap:20px!important}.work-card:nth-child(n){grid-column:auto!important;height:32vw!important}.work-card:nth-child(n) img{width:100%!important;height:100%!important;object-fit:contain!important}}
+
+/* Artwork-only thumbnails: remove photographed mat/background and equalize same-size canvases */
+.work-card:nth-child(n){background:transparent!important}
+/* Row 2: these three canvases are the same physical size */
+.work-card:nth-child(3),.work-card:nth-child(4),.work-card:nth-child(5){height:350px!important}
+.work-card:nth-child(3) img,.work-card:nth-child(4) img,.work-card:nth-child(5) img{height:100%!important;width:100%!important;object-fit:cover!important;object-position:center!important}
+/* Crop the pale photographed surround from Wet Summer */
+.work-card:nth-child(5) img{transform:scale(1.16)!important}
+/* Row 3: crop photographed surrounds from L'Eponge and Dans Le Four Stellaire */
+.work-card:nth-child(7) img{transform:scale(1.23)!important}
+.work-card:nth-child(8) img{transform:scale(1.12)!important}
