@@ -116,3 +116,17 @@ img{display:block;max-width:100%}.hero-studio{width:min(36vw,520px)}.hero-studio
   object-fit:contain!important;
   object-position:center!important;
 }
+
+/* Exact row alignment: artwork edges share top/bottom lines, Houldsworth-style */
+.work-grid{align-items:start!important}
+.work-grid .work-card:nth-child(n){display:flex!important;align-items:stretch!important;justify-content:center!important;overflow:hidden!important}
+.work-grid .work-card:nth-child(n) img{display:block!important;height:100%!important;width:100%!important;max-width:none!important;object-fit:fill!important;object-position:center!important;transform:none!important}
+/* Row 1 */
+.work-grid .work-card:nth-child(1),.work-grid .work-card:nth-child(2){height:410px!important}
+/* Row 2 */
+.work-grid .work-card:nth-child(3),.work-grid .work-card:nth-child(4),.work-grid .work-card:nth-child(5){height:350px!important}
+/* Row 3 */
+.work-grid .work-card:nth-child(6),.work-grid .work-card:nth-child(7),.work-grid .work-card:nth-child(8){height:345px!important}
+/* Exhibition page has 7 works: keep its last row aligned */
+.exhibition-detail .work-grid .work-card:nth-child(6),.exhibition-detail .work-grid .work-card:nth-child(7){height:345px!important}
+@media(max-width:760px){.work-grid .work-card:nth-child(n){height:32vw!important}}
