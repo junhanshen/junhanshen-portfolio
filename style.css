@@ -109,3 +109,21 @@ img{display:block;max-width:100%}.hero-studio{width:min(36vw,520px)}.hero-studio
   object-position:center center!important;
   transform:none!important;
 }
+
+/* Row 2: equal-size 48 x 60 in works — identical displayed artwork dimensions */
+.work-card:nth-child(3),
+.work-card:nth-child(4),
+.work-card:nth-child(5){
+  height:350px!important;
+  overflow:hidden!important;
+}
+.work-card:nth-child(3) img,
+.work-card:nth-child(4) img,
+.work-card:nth-child(5) img{
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  transform:none!important;
+}
