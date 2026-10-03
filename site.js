@@ -23,11 +23,12 @@ document.querySelectorAll('.work-grid').forEach(grid => {
   });
 
   const mobile = window.matchMedia('(max-width: 760px)');
+  const firstRowSize = Number(grid.dataset.firstRowSize) || 2;
   const arrangeRows = () => {
     const rows = document.createDocumentFragment();
     let offset = 0;
     while (offset < artworks.length) {
-      const slots = artworks.length === 1 ? 1 : mobile.matches || offset === 0 ? 2 : 3;
+      const slots = artworks.length === 1 ? 1 : mobile.matches ? 2 : offset === 0 ? firstRowSize : 3;
       const rowArtworks = artworks.slice(offset, offset + slots);
       const row = document.createElement('div');
       row.className = 'work-row';
