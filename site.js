@@ -66,6 +66,13 @@ if (viewer) {
     document.querySelector('#viewer-medium').textContent = artworkText(card, 'medium');
     document.querySelector('#viewer-size').textContent = formatDimensions(card.dataset.size, language);
 
+    const description = document.querySelector('#viewer-description');
+    if (description) {
+      const text = artworkText(card, 'description');
+      description.textContent = text;
+      description.hidden = !text;
+    }
+
     const quote = document.querySelector('#viewer-quote');
     const source = document.querySelector('#viewer-source');
     const quoteText = artworkText(card, 'quote');
