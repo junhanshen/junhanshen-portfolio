@@ -1,0 +1,1 @@
+const header=document.querySelector('.site-header');const button=document.querySelector('.menu');if(button)button.addEventListener('click',()=>header.classList.toggle('open'));const page=location.pathname.split('/').pop()||'index.html';document.querySelectorAll('nav a').forEach(a=>{if(a.getAttribute('href')===page)a.setAttribute('aria-current','page')});
