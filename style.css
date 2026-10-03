@@ -60,3 +60,23 @@ img{display:block;max-width:100%}.hero-studio{width:min(36vw,520px)}.hero-studio
 .work-card:nth-child(3) img{height:112%!important;max-width:112%!important}
 .work-card:nth-child(6) img{height:114%!important;max-width:114%!important}
 @media(max-width:760px){.work-card:nth-child(n){height:31vw!important}.work-card:nth-child(n) img{height:100%!important;width:auto!important;max-width:100%!important}}
+
+/* Final curated Works order: 2 / 3 / 3, tighter Houldsworth-like spacing */
+.work-grid{display:grid!important;grid-template-columns:repeat(12,minmax(0,1fr))!important;column-gap:clamp(14px,1.7vw,30px)!important;row-gap:clamp(34px,3.5vw,62px)!important;align-items:center!important}
+/* row 1: A Print + The Egg, The Bird */
+.work-card:nth-child(1){grid-column:1 / span 7!important;height:410px!important}
+.work-card:nth-child(2){grid-column:8 / span 5!important;height:410px!important}
+/* row 2: Into Thin Air + Memories + Wet Summer */
+.work-card:nth-child(3){grid-column:1 / span 4!important;height:335px!important}
+.work-card:nth-child(4){grid-column:5 / span 4!important;height:335px!important}
+.work-card:nth-child(5){grid-column:9 / span 4!important;height:335px!important}
+/* row 3: Infinite Distance + L'Eponge + Dans Le Four Stellaire */
+.work-card:nth-child(6){grid-column:1 / span 4!important;height:345px!important}
+.work-card:nth-child(7){grid-column:5 / span 3!important;height:345px!important}
+.work-card:nth-child(8){grid-column:8 / span 5!important;height:345px!important}
+.work-card:nth-child(n){display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;padding:0!important;margin:0!important;background:transparent!important;overflow:hidden!important}
+.work-card:nth-child(n) img{height:100%!important;width:100%!important;object-fit:contain!important;margin:auto!important;max-width:none!important}
+/* trim photographed margins in index thumbnails */
+.work-card:nth-child(2) img{transform:scale(1.06)}
+.work-card:nth-child(5) img{transform:scale(1.08)}
+@media(max-width:760px){.work-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;column-gap:10px!important;row-gap:20px!important}.work-card:nth-child(n){grid-column:auto!important;height:32vw!important}.work-card:nth-child(n) img{width:100%!important;height:100%!important;object-fit:contain!important}}
