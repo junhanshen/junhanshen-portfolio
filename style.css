@@ -130,3 +130,34 @@ img{display:block;max-width:100%}.hero-studio{width:min(36vw,520px)}.hero-studio
 /* Exhibition page has 7 works: keep its last row aligned */
 .exhibition-detail .work-grid .work-card:nth-child(6),.exhibition-detail .work-grid .work-card:nth-child(7){height:345px!important}
 @media(max-width:760px){.work-grid .work-card:nth-child(n){height:32vw!important}}
+
+/* FIX: preserve artwork aspect ratios. Never stretch images to fill both dimensions. */
+.work-grid .work-card:nth-child(n){
+  height:auto!important;
+  overflow:visible!important;
+  display:block!important;
+}
+.work-grid .work-card:nth-child(n) img{
+  width:100%!important;
+  height:auto!important;
+  max-width:100%!important;
+  object-fit:contain!important;
+  transform:none!important;
+  display:block!important;
+}
+/* Stable desktop layout: row membership stays fixed; images scale proportionally with viewport. */
+@media (min-width:761px){
+  .work-grid{
+    align-items:start!important;
+  }
+}
+/* Mobile: one column, intrinsic proportions */
+@media (max-width:760px){
+  .work-grid .work-card:nth-child(n){
+    height:auto!important;
+  }
+  .work-grid .work-card:nth-child(n) img{
+    width:100%!important;
+    height:auto!important;
+  }
+}
