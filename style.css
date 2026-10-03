@@ -99,3 +99,13 @@ img{display:block;max-width:100%}.hero-studio{width:min(36vw,520px)}.hero-studio
 .work-card:nth-child(2) img{transform:scale(1.24)!important}
 .work-card:nth-child(6) img{transform:scale(1.16)!important}
 .work-card:nth-child(7) img{transform:scale(1.42)!important}
+
+/* Exact crop for L'Éponge thumbnail: remove left/right photographed grey margins */
+.work-card:nth-child(7) img{
+  width:142%!important;
+  height:142%!important;
+  max-width:none!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  transform:none!important;
+}
