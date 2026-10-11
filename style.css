@@ -78,12 +78,27 @@ img{display:block;max-width:100%}.hero-studio{width:min(36vw,520px)}.hero-studio
 .installation-caption p{margin:0}
 .installation-controls{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .installation-count{white-space:nowrap;font-variant-numeric:tabular-nums}
+/* Process film and its optional text description. */
+.exhibition-process{width:85%;max-width:935px;margin:clamp(70px,11vh,130px) auto 0}
+.exhibition-process h2{font-size:14px;font-weight:400;margin:0 0 24px}
+.process-figure{margin:0}
+.process-video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#fff}
+.process-video:focus-visible,.process-description summary:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+.process-caption{margin-top:12px;color:var(--muted);font-size:12px;line-height:1.65}
+.process-caption p{margin:0}
+.process-description{margin-top:16px;color:var(--muted);font-size:12px;line-height:1.65}
+.process-description summary{cursor:pointer}
+.process-description p{max-width:800px;margin:12px 0}
+.process-description h3{font-size:12px;font-weight:400;color:var(--fg);margin:20px 0 8px}
 @keyframes installation-reveal{from{opacity:.5}to{opacity:1}}
 @media(max-width:760px){
   .installation-gallery h2{margin-bottom:18px}
   .installation-arrow{width:44px;height:44px;font-size:26px}
   .installation-caption{flex-direction:column;gap:8px;font-size:11px}
   .installation-controls{align-self:flex-end}
+  .exhibition-process{margin-top:55px}
+  .exhibition-process h2{margin-bottom:18px}
+  .process-caption{font-size:11px}
 }
 @media(prefers-reduced-motion:reduce){.installation-image img{animation:none}}
 
