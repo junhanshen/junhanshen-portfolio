@@ -62,4 +62,32 @@ img{display:block;max-width:100%}.hero-studio{width:min(36vw,520px)}.hero-studio
 .site-footer .credits{text-align:right}
 @media(max-width:900px){.site-footer{margin-top:60px;display:block}.site-footer .credits{text-align:left;margin-top:8px}}
 
-.exhibition-links{margin-top:clamp(70px,11vh,150px);display:flex;flex-direction:column;gap:18px;max-width:1000px}.exhibition-links a{font-size:clamp(22px,2.5vw,42px);font-weight:300;line-height:1.18;color:#b7b7b7;text-decoration:none;transition:color .18s ease}.exhibition-links a:hover,.exhibition-links a:focus{color:#111}.exhibition-head{margin:20px 0 48px;display:grid;grid-template-columns:minmax(260px,1fr) 1fr;gap:60px;align-items:start}.exhibition-head h1{font-size:clamp(28px,3vw,48px);font-weight:300;margin:0}.exhibition-head p{font-size:13px;line-height:1.65;margin:5px 0 0}.exhibition-head .exhibition-subtitle{font-size:12px;line-height:1.65;color:var(--muted);margin:12px 0 0}.exhibition-intro{max-width:900px;margin-bottom:70px}.exhibition-summary{font-size:clamp(16px,1.3vw,20px);line-height:1.6;margin:0}.exhibition-participants{margin-top:22px;font-size:13px}.exhibition-participants summary{cursor:pointer;color:var(--muted)}.exhibition-participants p{font-size:14px;line-height:1.7;margin-top:14px}.exhibition-images{min-height:260px;border-top:1px solid #eee;border-bottom:1px solid #eee;display:flex;align-items:center;justify-content:center;margin-bottom:85px}.exhibition-images[hidden]{display:none}.image-placeholder{font-size:12px;color:#aaa}.exhibition-works h2{font-size:14px;font-weight:400;margin:0 0 45px}.viewer-info blockquote{margin:28px 0 8px;padding:0;font-size:13px;line-height:1.65;font-style:italic;white-space:pre-line;max-width:300px}.viewer-info .viewer-description{margin:28px 0 0;color:var(--fg);font-size:13px;line-height:1.65;max-width:320px}.viewer-source{font-size:11px!important;line-height:1.5!important;color:#777}@media(max-width:760px){.exhibition-head{grid-template-columns:1fr;gap:16px;margin-bottom:40px}.exhibition-intro{margin-bottom:40px}.exhibition-links{margin-top:55px}.exhibition-images{min-height:180px;margin-bottom:55px}}
+.exhibition-links{margin-top:clamp(70px,11vh,150px);display:flex;flex-direction:column;gap:18px;max-width:1000px}.exhibition-links a{font-size:clamp(22px,2.5vw,42px);font-weight:300;line-height:1.18;color:#b7b7b7;text-decoration:none;transition:color .18s ease}.exhibition-links a:hover,.exhibition-links a:focus{color:#111}.exhibition-head{margin:20px 0 48px;display:grid;grid-template-columns:minmax(260px,1fr) 1fr;gap:60px;align-items:start}.exhibition-head h1{font-size:clamp(28px,3vw,48px);font-weight:300;margin:0}.exhibition-head p{font-size:13px;line-height:1.65;margin:5px 0 0}.exhibition-head .exhibition-subtitle{font-size:12px;line-height:1.65;color:var(--muted);margin:12px 0 0}.exhibition-intro{max-width:900px;margin-bottom:70px}.exhibition-summary{font-size:clamp(16px,1.3vw,20px);line-height:1.6;margin:0}.exhibition-participants{margin-top:22px;font-size:13px}.exhibition-participants summary{cursor:pointer;color:var(--muted)}.exhibition-participants p{font-size:14px;line-height:1.7;margin-top:14px}.exhibition-images{margin-bottom:85px}.exhibition-images[hidden]{display:none}.image-placeholder{font-size:12px;color:#aaa}
+
+/* Full-frame installation photographs and their independent slideshow controls. */
+.installation-gallery{max-width:1100px;margin-left:auto;margin-right:auto}
+.installation-gallery h2{font-size:14px;font-weight:400;margin:0 0 24px}
+.installation-figure{margin:0}
+.installation-stage{position:relative}
+.installation-image{display:block;width:100%;aspect-ratio:2048 / 1365;padding:0;border:0;background:none;cursor:pointer;touch-action:pan-y}
+.installation-image img{width:100%;height:100%;object-fit:contain;animation:installation-reveal .3s ease}
+.installation-image img[hidden]{display:none}
+.installation-arrow{position:absolute;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:40px;height:48px;padding:0;border:0;background:rgba(255,255,255,.85);color:#555;font:inherit;font-size:32px;line-height:1;cursor:pointer}
+.installation-prev{left:14px}
+.installation-next{right:14px}
+.installation-arrow:hover{background:#fff;color:var(--fg)}
+.installation-image:focus-visible,.installation-arrow:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+.installation-caption{display:flex;justify-content:space-between;gap:24px;margin-top:12px;color:var(--muted);font-size:12px;line-height:1.65}
+.installation-caption p{margin:0}
+.installation-count{white-space:nowrap;font-variant-numeric:tabular-nums}
+@keyframes installation-reveal{from{opacity:.5}to{opacity:1}}
+@media(max-width:760px){
+  .installation-gallery h2{margin-bottom:18px}
+  .installation-arrow{width:36px;height:44px;font-size:28px}
+  .installation-prev{left:8px}
+  .installation-next{right:8px}
+  .installation-caption{gap:12px;font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){.installation-image img{animation:none}}
+
+.exhibition-works h2{font-size:14px;font-weight:400;margin:0 0 45px}.viewer-info blockquote{margin:28px 0 8px;padding:0;font-size:13px;line-height:1.65;font-style:italic;white-space:pre-line;max-width:300px}.viewer-info .viewer-description{margin:28px 0 0;color:var(--fg);font-size:13px;line-height:1.65;max-width:320px}.viewer-source{font-size:11px!important;line-height:1.5!important;color:#777}@media(max-width:760px){.exhibition-head{grid-template-columns:1fr;gap:16px;margin-bottom:40px}.exhibition-intro{margin-bottom:40px}.exhibition-links{margin-top:55px}.exhibition-images{margin-bottom:55px}}
