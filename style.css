@@ -71,6 +71,11 @@ img{display:block;max-width:100%}.hero-studio{width:min(36vw,520px)}.hero-studio
 .installation-image{display:block;width:100%;aspect-ratio:2048 / 1365;padding:0;border:0;background:none;cursor:pointer;touch-action:pan-y}
 .installation-image img{width:100%;height:100%;object-fit:contain;animation:installation-reveal .3s ease}
 .installation-image img[hidden]{display:none}
+.installation-image [data-installation-slide][hidden]{display:none}
+.installation-collage{--collage-gap:clamp(6px,.8vw,12px);display:flex;justify-content:center;gap:var(--collage-gap);width:100%;height:100%}
+.installation-image .installation-collage-primary{flex:none;width:auto;max-width:none;height:100%}
+.installation-collage-stack{display:flex;flex-direction:column;align-items:center;gap:var(--collage-gap);height:100%;flex:none}
+.installation-image .installation-collage-stack img{flex:none;width:auto;max-width:none;height:calc((100% - var(--collage-gap)) / 2)}
 .installation-arrow{display:grid;place-items:center;width:36px;height:36px;padding:0;border:0;background:none;color:var(--muted);font:inherit;font-size:28px;line-height:1;cursor:pointer}
 .installation-arrow:hover{color:var(--fg)}
 .installation-image:focus-visible,.installation-arrow:focus-visible{outline:2px solid var(--fg);outline-offset:3px}

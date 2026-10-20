@@ -1,10 +1,13 @@
 // Installation photographs have their own controls, separate from the artwork viewer.
 document.querySelectorAll('[data-installation-gallery]').forEach(gallery => {
-  const slides = [...gallery.querySelectorAll('.installation-image img')];
+  const slides = [...gallery.querySelectorAll('[data-installation-slide]')];
+  const images = [...gallery.querySelectorAll('.installation-image img')];
   const imageButton = gallery.querySelector('.installation-image');
   const previous = gallery.querySelector('.installation-prev');
   const next = gallery.querySelector('.installation-next');
   const count = gallery.querySelector('.installation-count');
+  const credit = gallery.querySelector('.installation-credit');
+  const defaultCredit = credit ? { en: credit.dataset.en, zh: credit.dataset.zh } : null;
   if (!slides.length || !imageButton || !previous || !next || !count) return;
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -15,9 +18,14 @@ document.querySelectorAll('[data-installation-gallery]').forEach(gallery => {
 
   const syncLanguage = () => {
     const chinese = document.documentElement.lang.startsWith('zh');
-    slides.forEach(image => {
+    images.forEach(image => {
       image.alt = chinese ? image.dataset.altZh : image.dataset.altEn;
     });
+    if (credit) {
+      credit.dataset.en = slides[current].dataset.creditEn ?? defaultCredit.en;
+      credit.dataset.zh = slides[current].dataset.creditZh ?? defaultCredit.zh;
+      credit.textContent = chinese ? credit.dataset.zh : credit.dataset.en;
+    }
     imageButton.setAttribute('aria-label', stopped
       ? chinese ? '自动播放已暂停' : 'Slideshow paused'
       : chinese ? '暂停自动播放' : 'Pause slideshow');
@@ -26,8 +34,9 @@ document.querySelectorAll('[data-installation-gallery]').forEach(gallery => {
 
   const show = index => {
     current = (index + slides.length) % slides.length;
-    slides.forEach((image, position) => { image.hidden = position !== current; });
+    slides.forEach((slide, position) => { slide.hidden = position !== current; });
     count.textContent = `${current + 1} / ${slides.length}`;
+    syncLanguage();
   };
 
   const clearTimer = () => {
