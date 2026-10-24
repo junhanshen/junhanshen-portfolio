@@ -68,10 +68,12 @@ img{display:block;max-width:100%}.bio-layout{display:grid;grid-template-columns:
   .contact-layout{grid-template-columns:1fr;gap:36px}
   .contact-studio{justify-self:center}
 }
-/* Keep the complete homepage artwork readable on phones. */
+/* Frame the center panel on phones, keeping generous white space around it. */
 @media(max-width:760px){
   .home{padding-left:18px;padding-right:18px}
-  .hero-work{width:100%}
+  .hero-work{width:min(70vw,34vh,360px);width:min(70vw,34svh,360px)}
+  .hero-work a{aspect-ratio:605 / 1022;overflow:hidden}
+  .hero-work img{height:100%;object-fit:cover;object-position:center}
 }
 .viewer-info h2{display:none!important}
 .site-footer{max-width:none;margin:90px 3.2vw 28px;padding-top:18px;border-top:1px solid #e5e5e5;display:flex;justify-content:space-between;gap:24px;font-size:11px;line-height:1.5;letter-spacing:.04em;color:#777}
