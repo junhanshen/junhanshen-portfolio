@@ -1,47 +1,63 @@
 const header = document.querySelector('.site-header');
 const menu = document.querySelector('.menu');
 const exhibitions = document.querySelector('.nav-exhibitions');
-const exhibitionToggle = exhibitions?.querySelector('summary');
+const exhibitionToggle = exhibitions?.querySelector('.nav-exhibitions-toggle');
+const exhibitionPanel = exhibitions?.querySelector('.exhibition-menu');
 const mobileNavigation = window.matchMedia('(max-width: 900px)');
 const hoverNavigation = window.matchMedia('(min-width: 901px) and (hover: hover) and (pointer: fine)');
+
+function setExhibitionsOpen(open) {
+  if (!exhibitions || !exhibitionToggle || !exhibitionPanel) return;
+  exhibitions.classList.toggle('is-open', open);
+  exhibitionToggle.setAttribute('aria-expanded', String(open));
+  exhibitionPanel.hidden = !open;
+}
 
 function setNavigationOpen(open) {
   if (!header || !menu) return;
   header.classList.toggle('open', open);
   menu.setAttribute('aria-expanded', String(open));
   // Show both exhibitions immediately when the phone's main menu opens.
-  if (exhibitions) exhibitions.open = open && mobileNavigation.matches;
+  setExhibitionsOpen(open && mobileNavigation.matches);
 }
 
 if (menu) menu.onclick = () => setNavigationOpen(!header.classList.contains('open'));
 mobileNavigation.addEventListener('change', () => setNavigationOpen(false));
 
 if (exhibitions) {
+  exhibitionToggle.onclick = () => {
+    // On phones the exhibition links stay visible until navigation is dismissed.
+    setExhibitionsOpen(mobileNavigation.matches || exhibitionPanel.hidden);
+  };
   exhibitions.addEventListener('pointerenter', event => {
-    if (event.pointerType === 'mouse' && hoverNavigation.matches) exhibitions.open = true;
+    if (event.pointerType === 'mouse' && hoverNavigation.matches) setExhibitionsOpen(true);
   });
   exhibitions.addEventListener('pointerleave', () => {
-    if (hoverNavigation.matches && !exhibitions.contains(document.activeElement)) exhibitions.open = false;
+    if (hoverNavigation.matches && !exhibitions.contains(document.activeElement)) setExhibitionsOpen(false);
   });
   exhibitions.addEventListener('focusout', event => {
-    if (!exhibitions.contains(event.relatedTarget)) exhibitions.open = false;
+    // Touch browsers may report a null focus target before activating a link.
+    if (!mobileNavigation.matches && event.relatedTarget && !exhibitions.contains(event.relatedTarget)) setExhibitionsOpen(false);
   });
   exhibitionToggle.addEventListener('keydown', event => {
     if (event.key !== 'ArrowDown') return;
     event.preventDefault();
-    exhibitions.open = true;
+    setExhibitionsOpen(true);
     exhibitions.querySelector('a').focus();
   });
 }
 
 document.addEventListener('click', event => {
-  if (exhibitions && !exhibitions.contains(event.target) && !menu?.contains(event.target)) exhibitions.open = false;
+  if (!mobileNavigation.matches && exhibitions && !exhibitions.contains(event.target) && !menu?.contains(event.target)) setExhibitionsOpen(false);
   if (header && !header.contains(event.target)) setNavigationOpen(false);
 });
 document.addEventListener('keydown', event => {
   if (event.key !== 'Escape') return;
-  if (exhibitions?.open) {
-    exhibitions.open = false;
+  if (mobileNavigation.matches && header?.classList.contains('open')) {
+    setNavigationOpen(false);
+    menu.focus();
+  } else if (exhibitionPanel && !exhibitionPanel.hidden) {
+    setExhibitionsOpen(false);
     exhibitionToggle.focus();
   } else if (header?.classList.contains('open')) {
     setNavigationOpen(false);

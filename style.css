@@ -65,20 +65,21 @@ img{display:block;max-width:100%}.bio-layout{display:grid;grid-template-columns:
 .biography-page .cv{margin-top:clamp(72px,10vw,130px);scroll-margin-top:40px}
 /* A compact disclosure links directly to each exhibition. */
 .nav-exhibitions{position:relative}
-.nav-exhibitions-toggle{display:flex;align-items:center;gap:8px;padding:0;list-style:none;font-size:14px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);white-space:nowrap;cursor:pointer}
-.nav-exhibitions-toggle::-webkit-details-marker{display:none}
+.nav-exhibitions-toggle{display:flex;align-items:center;gap:8px;padding:0;border:0;background:none;font:inherit;font-size:14px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);white-space:nowrap;cursor:pointer}
 .nav-exhibitions-toggle::after{content:"";width:5px;height:5px;margin-top:-3px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg)}
-.nav-exhibitions[open]>.nav-exhibitions-toggle::after{margin-top:3px;transform:rotate(225deg)}
-.nav-exhibitions-toggle:hover,.nav-exhibitions[open]>.nav-exhibitions-toggle,.nav-exhibitions[data-active]>.nav-exhibitions-toggle{color:var(--fg)}
+.nav-exhibitions.is-open>.nav-exhibitions-toggle::after{margin-top:3px;transform:rotate(225deg)}
+.nav-exhibitions-toggle:hover,.nav-exhibitions.is-open>.nav-exhibitions-toggle,.nav-exhibitions[data-active]>.nav-exhibitions-toggle{color:var(--fg)}
 .nav-exhibitions[data-active]>.nav-exhibitions-toggle{border-bottom:1px solid var(--fg)}
 .exhibition-menu{position:absolute;top:100%;left:-16px;z-index:15;min-width:230px;max-width:calc(100vw - 2 * var(--pad));padding:12px 16px 10px;background:#fff;box-shadow:0 6px 14px #0000000a}
+.exhibition-menu[hidden]{display:none}
 .exhibition-menu a{display:block;padding:9px 0;font-size:14px;line-height:1.5;color:var(--muted);text-decoration:none}
 .exhibition-menu a:hover,.exhibition-menu a[aria-current=page]{color:var(--fg)}
-.site-header a:focus-visible,.site-header summary:focus-visible,.site-header button:focus-visible{outline:1px solid var(--fg);outline-offset:5px}
+.site-header a:focus-visible,.site-header button:focus-visible{outline:1px solid var(--fg);outline-offset:5px}
 @media(max-width:900px){
   .site-header nav{max-height:calc(100dvh - 70px);overflow-y:auto}
   .exhibition-menu{position:static;min-width:0;padding:8px 0 0 16px;box-shadow:none}
-  .exhibition-menu a{padding:9px 0}
+  .nav-exhibitions-toggle{min-height:44px}
+  .exhibition-menu a{display:flex;align-items:center;min-height:44px;padding:10px 0}
 }
 .viewer-info h2{display:none!important}
 .site-footer{max-width:none;margin:90px 3.2vw 28px;padding-top:18px;border-top:1px solid #e5e5e5;display:flex;justify-content:space-between;gap:24px;font-size:11px;line-height:1.5;letter-spacing:.04em;color:#777}
