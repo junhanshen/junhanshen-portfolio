@@ -66,8 +66,6 @@ img{display:block;max-width:100%}.hero-studio{width:min(36vw,520px)}.hero-studio
 
 /* Full-frame installation photographs and their independent slideshow controls. */
 .installation-gallery{width:85%;max-width:935px;margin-left:auto;margin-right:auto}
-.circuitry-installation-gallery{max-width:490px}
-.circuitry-installation-gallery .installation-image{aspect-ratio:934 / 1189}
 .installation-gallery h2{font-size:14px;font-weight:400;margin:0 0 24px}
 .installation-figure{margin:0}
 .installation-image{display:block;width:100%;aspect-ratio:2048 / 1365;padding:0;border:0;background:none;cursor:pointer;touch-action:pan-y}
