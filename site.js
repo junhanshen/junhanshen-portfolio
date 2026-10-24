@@ -1,10 +1,59 @@
 const header = document.querySelector('.site-header');
 const menu = document.querySelector('.menu');
-if (menu) menu.onclick = () => header.classList.toggle('open');
+const exhibitions = document.querySelector('.nav-exhibitions');
+const exhibitionToggle = exhibitions?.querySelector('summary');
+const mobileNavigation = window.matchMedia('(max-width: 900px)');
+const hoverNavigation = window.matchMedia('(min-width: 901px) and (hover: hover) and (pointer: fine)');
+
+function setNavigationOpen(open) {
+  if (!header || !menu) return;
+  header.classList.toggle('open', open);
+  menu.setAttribute('aria-expanded', String(open));
+  // Show both exhibitions immediately when the phone's main menu opens.
+  if (exhibitions) exhibitions.open = open && mobileNavigation.matches;
+}
+
+if (menu) menu.onclick = () => setNavigationOpen(!header.classList.contains('open'));
+mobileNavigation.addEventListener('change', () => setNavigationOpen(false));
+
+if (exhibitions) {
+  exhibitions.addEventListener('pointerenter', event => {
+    if (event.pointerType === 'mouse' && hoverNavigation.matches) exhibitions.open = true;
+  });
+  exhibitions.addEventListener('pointerleave', () => {
+    if (hoverNavigation.matches && !exhibitions.contains(document.activeElement)) exhibitions.open = false;
+  });
+  exhibitions.addEventListener('focusout', event => {
+    if (!exhibitions.contains(event.relatedTarget)) exhibitions.open = false;
+  });
+  exhibitionToggle.addEventListener('keydown', event => {
+    if (event.key !== 'ArrowDown') return;
+    event.preventDefault();
+    exhibitions.open = true;
+    exhibitions.querySelector('a').focus();
+  });
+}
+
+document.addEventListener('click', event => {
+  if (exhibitions && !exhibitions.contains(event.target) && !menu?.contains(event.target)) exhibitions.open = false;
+  if (header && !header.contains(event.target)) setNavigationOpen(false);
+});
+document.addEventListener('keydown', event => {
+  if (event.key !== 'Escape') return;
+  if (exhibitions?.open) {
+    exhibitions.open = false;
+    exhibitionToggle.focus();
+  } else if (header?.classList.contains('open')) {
+    setNavigationOpen(false);
+    menu.focus();
+  }
+});
 
 const page = location.pathname.split('/').pop() || 'index.html';
-document.querySelectorAll('nav>a').forEach(link => {
-  if (link.getAttribute('href') === page) link.setAttribute('aria-current', 'page');
+document.querySelectorAll('.site-header nav a[href]').forEach(link => {
+  if (link.getAttribute('href') !== page) return;
+  link.setAttribute('aria-current', 'page');
+  if (link.closest('.nav-exhibitions')) exhibitions.dataset.active = 'true';
 });
 
 let language = 'en';
@@ -36,6 +85,9 @@ function setLang(lang) {
   });
   document.querySelectorAll('[data-label-en][data-label-zh]').forEach(element => {
     element.setAttribute('aria-label', language === 'zh' ? element.dataset.labelZh : element.dataset.labelEn);
+  });
+  document.querySelectorAll('[data-alt-en][data-alt-zh]').forEach(image => {
+    image.alt = language === 'zh' ? image.dataset.altZh : image.dataset.altEn;
   });
   document.querySelectorAll('.work-card').forEach(card => {
     const image = card.querySelector('img');
