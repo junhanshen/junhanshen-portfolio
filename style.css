@@ -136,3 +136,13 @@ img{display:block;max-width:100%}.bio-layout{display:grid;grid-template-columns:
 @media(prefers-reduced-motion:reduce){.installation-image img{animation:none}}
 
 .exhibition-works h2{font-size:14px;font-weight:400;margin:0 0 45px}.viewer-info blockquote{margin:28px 0 8px;padding:0;font-size:13px;line-height:1.65;font-style:italic;white-space:pre-line;max-width:300px}.viewer-info .viewer-description{margin:28px 0 0;color:var(--fg);font-size:13px;line-height:1.65;max-width:320px}.viewer-source{font-size:11px!important;line-height:1.5!important;color:#777}@media(max-width:760px){.exhibition-head{grid-template-columns:1fr;gap:16px;margin-bottom:40px}.exhibition-intro{margin-bottom:40px}.exhibition-images,.exhibition-press{margin-bottom:55px}}
+
+/* Project context and audience responses, aligned with the installation images. */
+.project-exhibition{width:85%;max-width:935px;margin:0 auto 85px}
+.project-exhibition h2{font-size:14px;font-weight:400;margin:0 0 24px}
+.project-exhibition p{font-size:15px;line-height:1.8;margin:0 0 20px}
+.project-exhibition p:last-child{margin-bottom:0}
+@media(max-width:760px){
+  .project-exhibition{width:100%;margin-bottom:55px}
+  .project-exhibition h2{margin-bottom:18px}
+}
